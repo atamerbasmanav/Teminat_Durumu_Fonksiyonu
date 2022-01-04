@@ -1,0 +1,30 @@
+adet = 0
+islemTutari = 0
+sozlesmeSayisi = 0
+toplamBaslangicTeminati = 0
+kaldiracOrani = 0
+toplamSurdurmeTeminati = 0
+gunSonuKarZarar = 0
+gunSonuUzlasmaFiyati = 3.7610
+
+def teminatDurumu(sozlesmeTutari, baslangicTutari, islemFiyati, islemTipi):
+   if islemTipi == 'Uzun Pozisyon':
+       sozlesmeSayisi = 100
+       islemTutari = sozlesmeSayisi * sozlesmeTutari
+       toplamBaslangicTeminati = sozlesmeSayisi * baslangicTutari
+       kaldiracOrani = (islemTutari * islemFiyati) / toplamBaslangicTeminati
+       toplamSurdurmeTeminati =  (toplamBaslangicTeminati * 75) / 100
+       gunSonuKarZarar = (islemFiyati - gunSonuUzlasmaFiyati) * islemTutari
+       return islemTutari, toplamBaslangicTeminati, kaldiracOrani, toplamSurdurmeTeminati, gunSonuKarZarar
+   elif islemTipi == 'Kısa Pozisyon':
+       sozlesmeSayisi = 50
+       islemTutari = sozlesmeSayisi * sozlesmeTutari
+       toplamBaslangicTeminati = sozlesmeSayisi * baslangicTutari
+       kaldiracOrani = (islemTutari * islemFiyati) / toplamBaslangicTeminati
+       toplamSurdurmeTeminati =  (toplamBaslangicTeminati * 75) / 100
+       gunSonuKarZarar = (islemFiyati - gunSonuUzlasmaFiyati) * islemTutari
+       return islemTutari, toplamBaslangicTeminati, kaldiracOrani, toplamSurdurmeTeminati, gunSonuKarZarar
+   else:
+       print("Uygun olmayan bir işlem tipi seçtiniz. Uzun Pozisyon veya Kısa Pozisyon seçeneklerinde birini seçin")
+  
+print(teminatDurumu(1000, 130, 3.7565 , 'Uzun Pozisyon'))
